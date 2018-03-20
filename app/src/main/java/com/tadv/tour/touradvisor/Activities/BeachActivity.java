@@ -1,9 +1,10 @@
 package com.tadv.tour.touradvisor.Activities;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
-import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -21,14 +22,12 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-
 /**
- * Created by Z3US on 3/20/18.
+ * Created by Z3US
  */
 
 public class BeachActivity extends AppCompatActivity {
 
-    private ViewPager viewPager;
     private MaterialDialog progressDoalog;
     protected ProgressDialogHelper progressDialogHelper;
     private List<BeachTabItems> beachTabItemsArrayList = new ArrayList<>();
@@ -41,14 +40,14 @@ public class BeachActivity extends AppCompatActivity {
         progressDialogHelper = new ProgressDialogHelper();
         progressDoalog = progressDialogHelper.ShowLoading(progressDoalog,BeachActivity.this);
 
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
+        TabLayout tabLayout = findViewById(R.id.tab_layout);
 
         BeachInterface service = RetrofitApi.getApiInstance().create(BeachInterface.class);
         Call<List<BeachTabItems>> listCall = service.getTabs();
 
         listCall.enqueue(new Callback<List<BeachTabItems>>() {
             @Override
-            public void onResponse(Call<List<BeachTabItems>> call, Response<List<BeachTabItems>> response) {
+            public void onResponse(@NonNull Call<List<BeachTabItems>> call, @NonNull Response<List<BeachTabItems>> response) {
                 progressDoalog.dismiss();
                 beachTabItemsArrayList = response.body();
 
@@ -57,7 +56,7 @@ public class BeachActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<List<BeachTabItems>> call, Throwable t) {
+            public void onFailure(@NonNull Call<List<BeachTabItems>> call, @NonNull Throwable t) {
 
                 progressDoalog.dismiss();
 
@@ -68,6 +67,7 @@ public class BeachActivity extends AppCompatActivity {
             }
         });
 
+        @SuppressLint("InflateParams")
         TextView tab = (TextView) LayoutInflater.from(this).inflate(R.layout.custom_tab,null);
 
         TabGenerator tabGenerator = new TabGenerator();
