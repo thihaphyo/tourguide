@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.squareup.picasso.Picasso;
+import com.tadv.tour.touradvisor.Activities.BeachActivity;
 import com.tadv.tour.touradvisor.CustomListeners.CardClickListener;
 import com.tadv.tour.touradvisor.Models.DashboardItems;
 import com.tadv.tour.touradvisor.R;
@@ -64,8 +65,8 @@ public class HomeAdpater extends RecyclerView.Adapter<HomeRecyclerViewHolder> {
             public void onClick(int position) {
                 switch (position){
                     case 0:
-//                        Intent i = new Intent(c,BeachActivity.class);
-//                        c.startActivity(i);
+                        Intent i = new Intent(c,BeachActivity.class);
+                        c.startActivity(i);
                         break;
                     case 1:
                         break;

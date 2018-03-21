@@ -1,11 +1,15 @@
 package com.tadv.tour.touradvisor.Helpers;
 
+import android.content.Context;
 import android.support.design.widget.TabLayout;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
 
+import com.tadv.tour.touradvisor.Activities.BeachActivity;
 import com.tadv.tour.touradvisor.Models.BeachTabItems;
+import com.tadv.tour.touradvisor.R;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,14 +22,16 @@ public class TabGenerator {
 
     private final String TAG =this.getClass().toString();
 
-    public void Generate(TabLayout tabLayout, TextView tab,List<BeachTabItems> lstTabs){
+    public void Generate(TabLayout tabLayout, Context context, List<BeachTabItems> lstTabs){
 
         try{
-            for(int i =0; i< lstTabs.size(); i++)
+
+            for(int z =0 ; z < lstTabs.size(); z++)
             {
                 tabLayout.addTab(tabLayout.newTab());
-                tab.setText(lstTabs.get(i).getTab_name());
-                tabLayout.getTabAt(i).setCustomView(tab);
+                TextView tabOne = (TextView) LayoutInflater.from(context).inflate(R.layout.custom_tab,null);
+                tabOne.setText(lstTabs.get(z).getTab_name());
+                tabLayout.getTabAt(z).setCustomView(tabOne);
 
             }
 

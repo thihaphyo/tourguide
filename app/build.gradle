@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
 
+
 android {
     compileSdkVersion 26
     defaultConfig {
@@ -15,6 +16,10 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+    }
+    compileOptions {
+        targetCompatibility 1.8
+        sourceCompatibility 1.8
     }
 }
 
@@ -40,9 +45,15 @@ dependencies {
 
     implementation 'com.karumi:dexter:4.2.0'
 
-    compile 'io.reactivex:rxjava:1.1.6'
+    //RxAndroid
     compile 'io.reactivex:rxandroid:1.2.1'
-    compile 'com.squareup.retrofit2:adapter-rxjava:2.1.0'
+    compile 'io.reactivex:rxjava:1.1.6'
+    compile 'com.squareup.retrofit2:adapter-rxjava:2.0.2'
+
+
+    compile 'com.github.nirhart:parallaxscroll:1.0'
+
+    compile 'com.ss.bannerslider:bannerslider:1.8.0'
 
 
 }
